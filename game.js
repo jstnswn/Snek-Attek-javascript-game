@@ -8,7 +8,8 @@ const gameBoard = document.getElementById('game-board')
 
 function main(currentTime) {
   if (gameOver) {
-    if (confirm(`Yous snake was ${getSnakeLength()} snake bits, Press ok to restart.`)) {
+    if (confirm(`"aw no"
+    - A ${getSnakeLength()} foot-long snek`)) {
       window.location = '/';
     }
     return;
