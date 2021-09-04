@@ -45,7 +45,7 @@ function modifyFruit(fruit) {
     case  modifierChance < 11:
       fruit.modifier = 4;
       break;
-    case modifierChance > 47:
+    case modifierChance > 48:
       fruit.modifier = 9;
       fruit.powerUp = 10;
       break;
