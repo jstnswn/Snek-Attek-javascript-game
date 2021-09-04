@@ -14,18 +14,24 @@ function main(currentTime) {
     return;
   }
 
-
   window.requestAnimationFrame(main);
   const secondsSinceLastRender = (currentTime - lastRenderTime) / 1000;
   if (secondsSinceLastRender < 1 / SNAKE_SPEED) return;
 
   lastRenderTime = currentTime;
 
+  keepScore();
   update();
   draw();
 }
-
 window.requestAnimationFrame(main);
+
+function keepScore() {
+  const scoreDiv = document.getElementById('score');
+  let currentScore = document.createTextNode(`snek length: ${getSnakeLength()}`)
+  scoreDiv.innerHTML = '';
+  scoreDiv.appendChild(currentScore);
+}
 
 function update() {
   updateSnake();
