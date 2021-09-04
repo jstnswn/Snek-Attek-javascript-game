@@ -10,7 +10,6 @@ export function update() {
       if (food.powerUp) {
         powerUpSnake(food.powerUp);
       }
-    console.log(food);
     food = getRandomFoodPosition();
   }
 }
@@ -37,7 +36,6 @@ function getRandomFoodPosition() {
 
 function modifyFruit(fruit) {
   let modifierChance = Math.floor(Math.random() * 50) + 1;
-  console.log(modifierChance)
   switch (true) {
     case modifierChance < 7:
       fruit.modifier = 2;
