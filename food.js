@@ -1,4 +1,4 @@
-import { onSnake, expandSnake } from './snake.js';
+import { onSnake, expandSnake, SNAKE_SPEED, snakeBody, powerUpSnake } from './snake.js';
 import { randomGridPosition } from './grid.js'
 
 let food = getRandomFoodPosition();
@@ -6,11 +6,11 @@ const EXPANSION_RATE = 1;
 
 export function update() {
   if (onSnake(food)) {
-    if (food.modifier !== undefined) {
-      expandSnake(EXPANSION_RATE + 2);
-    } else {
-      expandSnake(EXPANSION_RATE);
-    }
+      expandSnake(EXPANSION_RATE + food.modifier);
+      if (food.powerUp) {
+        powerUpSnake(food.powerUp);
+      }
+    console.log(food);
     food = getRandomFoodPosition();
   }
 }
@@ -21,7 +21,7 @@ export function draw(gameBoard) {
   foodElement.style.gridColumnStart = food.x;
   foodElement.classList.add('food');
   if (food.modifier !== undefined) {
-    foodElement.classList.add('modifier')
+    foodElement.classList.add(`modifier${food.modifier}`)
   }
   gameBoard.appendChild(foodElement)
 }
@@ -29,11 +29,28 @@ export function draw(gameBoard) {
 function getRandomFoodPosition() {
   let newFoodPosition;
   if (newFoodPosition == null || onSnake(newFoodPosition)) {
-    let modifierChance = Math.floor(Math.random() * 20);
     newFoodPosition = randomGridPosition();
-    if (modifierChance === 10) {
-      newFoodPosition.modifier = 1;
-    }
+    modifyFruit(newFoodPosition);
   }
   return newFoodPosition;
+}
+
+function modifyFruit(fruit) {
+  let modifierChance = Math.floor(Math.random() * 50) + 1;
+  console.log(modifierChance)
+  switch (true) {
+    case modifierChance < 7:
+      fruit.modifier = 2;
+      break;
+    case  modifierChance < 11:
+      fruit.modifier = 4;
+      break;
+    case modifierChance > 47:
+      fruit.modifier = 9;
+      fruit.powerUp = 10;
+      break;
+    default:
+       fruit.modifier = 0;
+  }
+  return fruit;
 }

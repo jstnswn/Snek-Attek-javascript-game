@@ -29,27 +29,40 @@ body {
   border: .25vmin solid black;
 }
 
-.modifier {
-  background-color: #28FFBF
+.modifier2 {
+  background-color: #BB371A;
+}
+
+.modifier4 {
+  background-color: #AC66CC
+}
+
+.modifier9 {
+  background-color: #28FFBF;
 }
 
 #score {
   display: flex;
   align-self: flex-start;
-  justify-self: flex-end;
   color: #FB9300;
   font-size: 12px;
   margin-top: 30px;
-  margin-left: 35px;
+  margin-left: 25px;
   padding-left: 0;
+  flex-direction: column;
+  align-items: center;
 }
+
+/* #snake-length {
+
+} */
 
 #title {
   display: flex;
   align-self: flex-start;
   color: #FB9300;
   font-size: 12px;
-  margin-top: 30px;
-  margin-right: 35px;
+  margin-top: 40px;
+  margin-right: 25px;
   margin-left: 20px;
 }

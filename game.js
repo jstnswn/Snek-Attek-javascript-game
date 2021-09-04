@@ -28,8 +28,8 @@ function main(currentTime) {
 window.requestAnimationFrame(main);
 
 function keepScore() {
-  const scoreDiv = document.getElementById('score');
-  let currentScore = document.createTextNode(`snek length: ${getSnakeLength()}`)
+  const scoreDiv = document.getElementById('snake-length');
+  let currentScore = document.createTextNode(`${getSnakeLength()}`)
   scoreDiv.innerHTML = '';
   scoreDiv.appendChild(currentScore);
 }

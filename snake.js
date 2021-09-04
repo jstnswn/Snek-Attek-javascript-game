@@ -1,7 +1,8 @@
 import { getInputDirection } from "./input.js";
 
-export const SNAKE_SPEED = 10;
-const snakeBody = [ { x: 11, y: 11 } ];
+
+export let SNAKE_SPEED = 10;
+export let snakeBody = [ { x: 11, y: 11 } ];
 let newSegments = 0;
 
 export function update() {
@@ -58,4 +59,13 @@ function addSegments() {
 
 export function getSnakeLength() {
   return snakeBody.length;
+}
+
+export function powerUpSnake(speedBoost) {
+  SNAKE_SPEED += speedBoost;
+  setTimeout(() => {
+
+    SNAKE_SPEED = 10;
+    snakeBody = snakeBody.slice(0, snakeBody.length - 6);
+  }, 5000);
 }
