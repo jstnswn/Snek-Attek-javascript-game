@@ -5,6 +5,7 @@ import { generateMessage } from './message.js';
 
 let lastRenderTime = 0;
 let gameOver = false;
+let collisionOverride = false;
 const gameBoard = document.getElementById('game-board')
 
 function main(currentTime) {
@@ -47,5 +48,13 @@ function draw() {
 }
 
 function checkDeath() {
-  gameOver = outsideGrid(getSnakeHead()) || snakeIntersection();
+  if (collisionOverride) {
+    gameOver = outsideGrid(getSnakeHead());
+  } else {
+    gameOver = outsideGrid(getSnakeHead()) || snakeIntersection();
+  }
+}
+
+export function gameOverOverride(boolean) {
+  collisionOverride = boolean;
 }

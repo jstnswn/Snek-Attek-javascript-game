@@ -24,21 +24,39 @@ body {
   border: .25vmin solid black;
 }
 
+.snake-ghost {
+  background-color: #343F56;
+  border: .25vmin solid #FB9300;
+  box-shadow: 0 0 5px #0a071b85;
+}
+
+.snake-mega {
+  background-color: #F54748;
+  box-shadow: 0 0 5px #FB9300;
+  border: .25vmin solid black;
+}
+
 .food {
   background-color: #BB371A;
   border: .25vmin solid black;
 }
 
-.modifier2 {
+.food-sm {
   background-color: #F54748;
 }
 
-.modifier4 {
+.food-lg {
   background-color: #AC66CC
 }
 
-.modifier9 {
+.food-mega {
   background-color: #28FFBF;
+}
+
+.food-ghost {
+  background-color: #343F56;
+  border: .25vmin solid #F54748;
+  box-shadow: 0 0 5px #0a071b85;
 }
 
 #score {
@@ -52,10 +70,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-
-/* #snake-length {
-
-} */
 
 #title {
   display: flex;

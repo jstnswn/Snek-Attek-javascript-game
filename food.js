@@ -8,7 +8,7 @@ export function update() {
   if (onSnake(food)) {
       expandSnake(EXPANSION_RATE + food.modifier);
       if (food.powerUp) {
-        powerUpSnake(food.powerUp);
+        powerUpSnake(food.powerUp, food.modifier);
       }
     food = getRandomFoodPosition();
   }
@@ -19,8 +19,8 @@ export function draw(gameBoard) {
   foodElement.style.gridRowStart = food.y;
   foodElement.style.gridColumnStart = food.x;
   foodElement.classList.add('food');
-  if (food.modifier !== undefined) {
-    foodElement.classList.add(`modifier${food.modifier}`)
+  if (food.powerUp !== undefined) {
+    foodElement.classList.add(`food-${food.powerUp}`)
   }
   gameBoard.appendChild(foodElement)
 }
@@ -39,13 +39,19 @@ function modifyFruit(fruit) {
   switch (true) {
     case modifierChance < 7:
       fruit.modifier = 2;
+      fruit.powerUp = 'sm';
       break;
-    case  modifierChance < 11:
+    case modifierChance < 11:
       fruit.modifier = 4;
+      fruit.powerUp = 'lg';
+      break;
+    case modifierChance < 15:
+      fruit.modifier = 0;
+      fruit.powerUp = 'ghost';
       break;
     case modifierChance > 48:
       fruit.modifier = 9;
-      fruit.powerUp = 10;
+      fruit.powerUp = 'mega';
       break;
     default:
        fruit.modifier = 0;

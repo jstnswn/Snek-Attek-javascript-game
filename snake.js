@@ -1,9 +1,13 @@
 import { getInputDirection } from "./input.js";
+import { gameOverOverride } from "./game.js";
 
 
 export let SNAKE_SPEED = 10;
 export let snakeBody = [ { x: 11, y: 11 } ];
 let newSegments = 0;
+let powerUp = null;
+let timer1;
+let timer2;
 
 export function update() {
   addSegments();
@@ -23,6 +27,12 @@ export function draw(gameBoard) {
   snakeElement.style.gridRowStart = segment.y;
   snakeElement.style.gridColumnStart = segment.x;
   snakeElement.classList.add('snake');
+
+  if (powerUp) {
+    snakeElement.classList.add(`snake-${powerUp}`);
+  } else {
+    snakeElement.classList.remove(`snake-${powerUp}`);
+  }
   gameBoard.appendChild(snakeElement)
   })
 }
@@ -61,11 +71,34 @@ export function getSnakeLength() {
   return snakeBody.length;
 }
 
-export function powerUpSnake(speedBoost) {
-  SNAKE_SPEED += speedBoost;
-  setTimeout(() => {
+export function powerUpSnake(power, modifier) {
+  powerUp = power;
+  switch (power) {
+    case 'mega':
+      makeMegaSnake(modifier);
+      break;
+    case 'ghost':
+      makeGhostSnake(power);
+      break;
+  }
+}
 
-    SNAKE_SPEED = 10;
-    snakeBody = snakeBody.slice(0, snakeBody.length - 6);
-  }, 5000);
+function makeMegaSnake(modifier) {
+  clearTimeout(timer1);
+  SNAKE_SPEED += modifier;
+    timer1 = setTimeout(() => {
+      SNAKE_SPEED = 10;
+      snakeBody = snakeBody.slice(0, snakeBody.length - 6);
+      powerUp = null;
+    }, 5000);
+}
+
+function makeGhostSnake(power) {
+  clearTimeout(timer2);
+    // powerUp = power;
+    gameOverOverride(true);
+    timer2 = setTimeout(() => {
+      powerUp = null;
+      gameOverOverride(false);
+    }, 5000);
 }
