@@ -8,6 +8,7 @@ let newSegments = 0;
 let powerUp = null;
 let timer1;
 let timer2;
+let timer3;
 
 export function update() {
   addSegments();
@@ -71,34 +72,49 @@ export function getSnakeLength() {
   return snakeBody.length;
 }
 
-export function powerUpSnake(power, modifier) {
-  powerUp = power;
+export function powerUpSnake(power) {
   switch (power) {
     case 'mega':
-      makeMegaSnake(modifier);
+      makeMegaSnake(power);
       break;
     case 'ghost':
       makeGhostSnake(power);
       break;
+    case 'speed':
+      makeSpeedSnake(power);
   }
 }
 
-function makeMegaSnake(modifier) {
+function makeMegaSnake(power) {
+  // still know when ghost wears off
+  if (powerUp !== 'ghost') {
+    powerUp = power;
+  }
   clearTimeout(timer1);
-  SNAKE_SPEED += modifier;
+  SNAKE_SPEED = 20;
     timer1 = setTimeout(() => {
       SNAKE_SPEED = 10;
       snakeBody = snakeBody.slice(0, snakeBody.length - 6);
-      powerUp = null;
+      if (powerUp !== 'ghost') {
+        powerUp = null;
+      }
     }, 5000);
 }
 
 function makeGhostSnake(power) {
+  powerUp = power;
   clearTimeout(timer2);
-    // powerUp = power;
     gameOverOverride(true);
     timer2 = setTimeout(() => {
       powerUp = null;
       gameOverOverride(false);
     }, 5000);
+}
+
+function makeSpeedSnake(power) {
+  clearTimeout(timer3);
+  SNAKE_SPEED = 17;
+  timer3 = setTimeout(() => {
+    SNAKE_SPEED = 10;
+  }, 5000);
 }

@@ -31,7 +31,7 @@ body {
 }
 
 .snake-mega {
-  background-color: #F54748;
+  background-color: #28FFBF;
   box-shadow: 0 0 5px #FB9300;
   border: .25vmin solid black;
 }
@@ -42,21 +42,25 @@ body {
 }
 
 .food-sm {
-  background-color: #F54748;
-}
-
-.food-lg {
-  background-color: #AC66CC
+  background-color: #f72727;
+  box-shadow: 0 0 5px #f72727;
 }
 
 .food-mega {
   background-color: #28FFBF;
+  box-shadow: 0 0 5px white;
 }
 
 .food-ghost {
   background-color: #343F56;
   border: .25vmin solid #F54748;
-  box-shadow: 0 0 5px #0a071b85;
+  box-shadow: 0 0 5px #1b071985;
+}
+/* #ff2bed85; */
+
+.food-speed {
+  background-color: #FEFBF3;
+  box-shadow: 0 0 5px white
 }
 
 #score {

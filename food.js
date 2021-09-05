@@ -8,7 +8,7 @@ export function update() {
   if (onSnake(food)) {
       expandSnake(EXPANSION_RATE + food.modifier);
       if (food.powerUp) {
-        powerUpSnake(food.powerUp, food.modifier);
+        powerUpSnake(food.powerUp);
       }
     food = getRandomFoodPosition();
   }
@@ -36,18 +36,18 @@ function getRandomFoodPosition() {
 
 function modifyFruit(fruit) {
   let modifierChance = Math.floor(Math.random() * 50) + 1;
+  fruit.modifier = 0;
   switch (true) {
-    case modifierChance < 7:
+    case modifierChance < 6:
       fruit.modifier = 2;
       fruit.powerUp = 'sm';
       break;
-    case modifierChance < 11:
-      fruit.modifier = 4;
-      fruit.powerUp = 'lg';
-      break;
-    case modifierChance < 15:
-      fruit.modifier = 0;
+    case modifierChance < 10:
       fruit.powerUp = 'ghost';
+      break;
+    case modifierChance < 13:
+      fruit.modifier = 1;
+      fruit.powerUp = 'speed'
       break;
     case modifierChance > 48:
       fruit.modifier = 9;
