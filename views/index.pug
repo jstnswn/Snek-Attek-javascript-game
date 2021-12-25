@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com")
+        link(href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet")
+        link(rel='stylesheet' href='/stylesheets/styles.css')
+        title Snek Attek
+    body
+        .left
+            #title Snek Attek
+            #leaderboard TOP SCORES
+                .leaderboard-box
+                    div RANK
+                    div SCORE
+                    div NAME
+        #game-board
+        #score
+            p snek length:
+            #snake-length
+        script(src="/javascripts/leaderboard.js" type="module")
+        script(src="/javascripts/game.js" type="module")
+        //- script(src="/javascripts/main.js" type="module")
