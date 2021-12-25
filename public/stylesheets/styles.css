@@ -101,10 +101,12 @@ body {
   display: flex;
   flex-direction: column;
   color: #FB9300;
-  font-size: 12px;
+  font-size: 10px;
   align-self: center;
   justify-self: flex-end;
   padding: 10px;
+  margin-left: 5px;
+  text-align: center;
   /* padding-right: 100px; */
   max-width: 300px;
   height: 500px;
@@ -137,4 +139,9 @@ body {
   position: absolute;
   margin: auto;
   display: none;
+}
+
+.name div {
+  margin-left: -7px;
+  /* border: red solid 1px; */
 }
