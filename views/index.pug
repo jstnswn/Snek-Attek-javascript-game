@@ -21,6 +21,10 @@ html(lang="en")
         #score
             p snek length:
             #snake-length
+        form#user-form
+            label(for='username')
+            input(id='username' name='username' placeholder="ender your name")
+            button ssubmit
         script(src="/javascripts/leaderboard.js" type="module")
         script(src="/javascripts/game.js" type="module")
         //- script(src="/javascripts/main.js" type="module")

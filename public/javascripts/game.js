@@ -2,7 +2,7 @@ import { update as updateSnake, draw as drawSnake, SNAKE_SPEED, getSnakeHead, sn
 import { update as updateFood, draw as drawFood } from './food.js';
 import { outsideGrid } from './grid.js';
 import { generateMessage } from './message.js';
-import { postScore } from './leaderboard.js';
+import { postScore, compareLeaderboard, displayTopScoreForm } from './leaderboard.js';
 
 let lastRenderTime = 0;
 let gameOver = false;
@@ -13,10 +13,14 @@ const gameBoard = document.getElementById('game-board')
 // console.log(readScore())
 
 
-function main(currentTime) {
+async function main(currentTime) {
   if (gameOver) {
-    postScore(getSnakeLength());
-    if (confirm(generateMessage(getSnakeLength()))) {
+    let snakeLength = getSnakeLength()
+    const isHighScore = await compareLeaderboard(snakeLength);
+    // await displayTopScoreForm(snakeLength);
+    if (isHighScore) {
+      displayTopScoreForm();
+    } else if (confirm(generateMessage(snakeLength))) {
       window.location = '/';
     }
     return;

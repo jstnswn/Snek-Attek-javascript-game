@@ -132,3 +132,9 @@ body {
 #createItem {
   justify-self: flex-end;
 }
+
+#user-form {
+  position: absolute;
+  margin: auto;
+  display: none;
+}

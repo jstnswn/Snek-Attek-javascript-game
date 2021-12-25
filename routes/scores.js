@@ -18,8 +18,8 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    const { score } = req.body;
-    const newScore = db.Score.create({ score, userId: 1 });
+    const { score, userId } = req.body;
+    const newScore = db.Score.create({ score, userId });
 
     if (newScore) {
         res.status(200);

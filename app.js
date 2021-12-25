@@ -3,6 +3,7 @@ const path = require('path');
 const morgan = require('morgan');
 // const cookieParser = require('cookie-parser');
 const scoresRoute = require('./routes/scores');
+const usersRoute = require('./routes/users');
 
 const app = express();
 
@@ -19,9 +20,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
     res.render('index', {})
-})
+});
 
-app.use('/scores', scoresRoute)
+app.use('/scores', scoresRoute);
+app.use('/users', usersRoute);
 
 
 // Catch unhandled requests and forward to error handler
