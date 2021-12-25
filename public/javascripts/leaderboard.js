@@ -54,7 +54,7 @@ export async function compareLeaderboard(newScore) {
     const res = await fetch('/scores');
     const { scores } = await res.json();
     let isHighScore = false;
-    if (scores.length < 1) isHighScore = true;
+    if (scores.length < 3) isHighScore = true;
 
     scores.forEach(({ score }) => {
         if (newScore > score) {
